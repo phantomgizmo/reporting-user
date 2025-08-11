@@ -8,6 +8,10 @@ import {
 
 import { Separator } from '@/components/ui/separator';
 
+import { dummyReports } from '../dummy';
+
+import { CommentThread } from '@/components/ui/commentthread';
+
 import {
   Select,
   SelectContent,
@@ -20,6 +24,7 @@ import {
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { Textarea } from '@/components/ui/textarea';
 
 const ReportDetail = () => {
   return (
@@ -57,7 +62,23 @@ const ReportDetail = () => {
         </section>
         <Separator />
         <section>
-          <h1 className="font-medium">コメント一覧</h1>
+          <h1 className="mb-4 font-medium">コメント一覧</h1>
+          {dummyReports[0].comments.map((comment) => (
+            <CommentThread comment={comment} />
+          ))}
+          <Card className="mb-4">
+            <CardContent className="pt-4">
+              <div className="space-y-1">
+                <Label htmlFor="newComment" className="text-sm font-medium">
+                  コメント入力欄
+                </Label>
+                <Textarea
+                  id="newComment"
+                  className="resize-none border-none focus:outline-none focus:ring-0"
+                />
+              </div>
+            </CardContent>
+          </Card>
         </section>
       </CardContent>
       <CardFooter className="mt-auto justify-center gap-2">

@@ -1,4 +1,5 @@
 export type Reply = {
+  id: number;
   author: string;
   message: string;
 };
@@ -38,31 +39,25 @@ export const dummyReports: Report[] = [
     comments: [
       {
         id: 1,
-        author: 'employee one',
-        message: 'In ipsum et qui sunt quis consectetur fugiat tempor anim do.',
+        author: 'コメント者の名前',
+        message: '質問No.1',
         reply: [
           {
-            author: 'senior employee',
-            message:
-              'Et velit elit ullamco laboris elit ullamco nisi quis culpa laboris aliquip dolor adipisicing.'
-          },
-          {
-            author: 'senior employee',
-            message:
-              'Et velit ea adipisicing fugiat cillum aliqua fugiat culpa occaecat cillum aliquip excepteur ullamco excepteur.'
+            id: 1,
+            author: '幹部社員指摘',
+            message: '回答'
           }
         ]
       },
       {
         id: 2,
-        author: 'employee two',
-        message:
-          'Aliquip eiusmod duis reprehenderit est voluptate do non qui cupidatat esse eiusmod velit qui.',
+        author: 'コメント者の名前',
+        message: '質問No.2',
         reply: []
       }
     ],
     createdDate: '2024/09/09',
-    reportStatus: 'Publish'
+    reportStatus: '公開'
   },
   {
     id: 2,
@@ -78,30 +73,24 @@ export const dummyReports: Report[] = [
     comments: [
       {
         id: 1,
-        author: 'employee one',
-        message: 'In ipsum et qui sunt quis consectetur fugiat tempor anim do.',
+        author: 'コメント者の名前',
+        message: '質問No.2',
         reply: [
           {
-            author: 'senior employee',
-            message:
-              'Et velit elit ullamco laboris elit ullamco nisi quis culpa laboris aliquip dolor adipisicing.'
-          },
-          {
-            author: 'senior employee',
-            message:
-              'Et velit ea adipisicing fugiat cillum aliqua fugiat culpa occaecat cillum aliquip excepteur ullamco excepteur.'
+            id: 1,
+            author: '幹部社員指摘',
+            message: '回答'
           }
         ]
       },
       {
         id: 2,
-        author: 'employee two',
-        message:
-          'Aliquip eiusmod duis reprehenderit est voluptate do non qui cupidatat esse eiusmod velit qui.',
+        author: 'コメント者の名前',
+        message: '質問No.2',
         reply: []
       }
     ],
     createdDate: '2024/09/10',
-    reportStatus: 'Draft'
+    reportStatus: '下書き'
   }
 ];

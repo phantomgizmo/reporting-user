@@ -2,6 +2,8 @@ import { type ColumnDef } from '@tanstack/react-table';
 
 import { type Report } from './dummy';
 
+import NavigateButton from '@/components/ui/navigate-button';
+
 export const columns: ColumnDef<Report>[] = [
   {
     id: 'rowNumber',
@@ -22,5 +24,9 @@ export const columns: ColumnDef<Report>[] = [
     accessorKey: 'reportStatus',
     header: 'ステータス',
     cell: ({ row }) => <div>{row.getValue('reportStatus')}</div>
+  },
+  {
+    id: 'details',
+    cell: () => <NavigateButton path="/reports/edit">編集</NavigateButton>
   }
 ];

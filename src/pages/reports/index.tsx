@@ -1,6 +1,8 @@
 import { dummyReports, type Report } from './dummy';
 import { columns } from './columns';
 
+import { toast } from 'sonner';
+
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -29,8 +31,12 @@ import {
   TableHeader,
   TableRow
 } from '@/components/ui/table';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const Report = () => {
+  const navigate = useNavigate();
+
   const table = useReactTable<Report>({
     data: dummyReports,
     columns,
@@ -40,6 +46,17 @@ const Report = () => {
     getFilteredRowModel: getFilteredRowModel()
   });
 
+  useEffect(() => {
+    requestAnimationFrame(() =>
+      toast('お知らせ：あなたが作成したレポートにコメントがあります。', {
+        action: {
+          label: '詳細',
+          onClick: () => navigate('/reports/details')
+        }
+      })
+    );
+  }, [navigate]);
+
   return (
     <Card className="flex w-full flex-1 flex-col">
       <CardHeader>
@@ -47,10 +64,12 @@ const Report = () => {
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
         <div className="self-end">
-          <Button>新規レポート作成</Button>
+          <Button onClick={() => navigate('/reports/create')}>
+            新規レポート作成
+          </Button>
         </div>
         <div className="flex justify-between gap-4">
-          <Input className="leading-loose" placeholder="フィルタ 。。。" />
+          <Input placeholder="フィルタ 。。。" />
           <Button>検索</Button>
         </div>
         <Table>
